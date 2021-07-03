@@ -2,7 +2,7 @@
 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from plugins.info import main
+from plugins.info import movie
 
 
 @Client.on_message(filters.command(["info", "information"]))
