@@ -1,6 +1,7 @@
 # Author: Fayas (https://github.com/FayasNoushad) (@FayasNoushad)
 
 from pyrogram import Client, filters
+from plugins.info import get_movie
 
 
 @Client.on_message(filters.private & filters.command(["start"]))
