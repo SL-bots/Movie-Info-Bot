@@ -6,7 +6,6 @@ import requests
 API = 'https://api.sumanjay.cf/watch/'
 
 def movie(name):
-    movie_name = name.replace(" ", "+").replace("\n", "+").lower()
     response = requests.get(API + movie_name)
     movies = response.json()
     for movie in movies:
