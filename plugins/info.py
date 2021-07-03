@@ -27,7 +27,7 @@ async def get_command(bot, update):
     )
 
 
-@Client.on_message(filters.private & filters.text)
+@Client.on_message(filters.private & filters.text & ~filters.command(["start"]))
 async def get_movie_name(bot, update):
     await get_movie(bot, update, update.text)
 
@@ -68,7 +68,7 @@ async def cb_edit(bot, update, movie, type, year):
     type_movie = type.replace("_", " ")
     movies = response.json()
     for movie in movies:
-        if (title in movie['title']) and (movie['type'] == type_movie) and (movie['year'] == int(year)):
+        if (title in movie['title']) and (movie['type'] == type_movie) and (movie['release_year'] == int(year)):
             try:
                 info = info(movie)
             except Exception as error:
