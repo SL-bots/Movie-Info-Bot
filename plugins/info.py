@@ -68,12 +68,13 @@ async def cb_edit(bot, update, movie, type):
     for i in movies:
         if (title in i['title'] or i['title'] in title) and (type_movie in i['type'] or i['type'] in type_movie):
             try:
-                thumb = thumb(movie)
-                info = info(movie)
+                thumbnail = thumb(movie)
+            try:
+                information = info(movie)
             except Exception as error:
-                info = error
+                information = error
     await update.edit_text(
-        text=info,
+        text=information,
         disable_web_page_preview=True
     )
 
