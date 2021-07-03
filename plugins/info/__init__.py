@@ -51,6 +51,23 @@ async def get_movie(bot, update, movie):
     )
 
 
+async def cb_edit(bot, update, movie, type):
+    movie_name = movie.replace(" ", "+").replace("\n", "+").lower()
+    response = requests.get(API + movie_name)
+    movies = response.json()
+    for movie in movies:
+        try:
+            if (movie['title'] == movie) and (movie['type'] == type):
+                info = info(movie)
+        except Exception as error:
+            info = error
+    await update.edit_text(
+        text=info,
+        disable_web_page_preview=True,
+        quote=True
+    )
+
+
 def info(movie):
     info = f"Title: {movie['title']}\n"
     info += f"Type: {movie['type']}\n"
