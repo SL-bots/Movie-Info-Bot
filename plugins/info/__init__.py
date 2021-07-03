@@ -43,6 +43,8 @@ async def get_movie(bot, update, movie):
         data += movie['title'].replace(" ", "_")
         data += "+"
         data += movie['type'].replace(" ", "_")
+        data += "+"
+        data += str(movie['year'])
         keyboard.append(
             [
                 InlineKeyboardButton(
@@ -59,14 +61,14 @@ async def get_movie(bot, update, movie):
     )
 
 
-async def cb_edit(bot, update, movie, type):
+async def cb_edit(bot, update, movie, type, year):
     movie_name = movie.replace("_", "+")
     response = requests.get(API + movie_name)
     title = movie.replace("_", " ")
     type_movie = type.replace("_", " ")
     movies = response.json()
     for movie in movies:
-        if (title in movie['title']) and (movie['type'] == type_movie):
+        if (title in movie['title']) and (movie['type'] == type_movie) and (movie[year['year'] == int(year)):
             try:
                 info = info(movie)
             except Exception as error:
