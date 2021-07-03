@@ -29,6 +29,7 @@ async def get_command(bot, update):
 async def get_movie_name(bot, update):
     await get_movie(bot, update.message, update.text)
 
+
 async def get_movie(bot, update, movie):
     movie_name = movie.replace(" ", "+").replace("\n", "+").lower()
     response = requests.get(API + movie_name)
