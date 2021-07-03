@@ -73,7 +73,7 @@ async def cb_edit(bot, update, movie, type):
             except Exception as error:
                 info = error
     await update.edit_text(
-        text=text,
+        text=info,
         disable_web_page_preview=True
     )
 
