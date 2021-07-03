@@ -37,12 +37,14 @@ async def get_movie(bot, update, movie):
     keyboard = []
     for i in movies:
         movie = i.replace(" ", "_").replace("\n", "_").lower()
-        keyboard.append([
-            InlineKeyboardButton(
-                text=f"{movie['title']} - {movie['type']}",
-                callback_data=f"movie+{movie['title']}+{movie['type']}"
-            )
-        ]
+        keyboard.append(
+            [
+                InlineKeyboardButton(
+                    text=f"{movie['title']} - {movie['type']}",
+                    callback_data=f"movie+{movie['title']}+{movie['type']}"
+                )
+            ]
+        )
     await update.reply_text(
         text="Select required option",
         reply_markup=InlineKeyboardMarkup(keyboard),
