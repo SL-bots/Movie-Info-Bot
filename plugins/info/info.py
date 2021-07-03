@@ -2,3 +2,7 @@
 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
+@Client.on_message(filters.command(["info", "information"]))
+async def get_command(bot, update):
+    movie = update.text.split(" ", 1)
