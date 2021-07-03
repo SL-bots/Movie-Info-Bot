@@ -13,9 +13,6 @@ async def get_command(bot, update):
     movie_name = update.text.split(" ", 1).replace(" ", "+").replace("\n", "+").lower()
     response = requests.get(API + movie_name)
     movies = response.json()
-    for movie in movies:
-        info = info(movie)
-        thumb = thumb(movie)
 
 
 @Client.on_message(filters.private & filters.text)
@@ -23,9 +20,21 @@ async def get_movie(bot, update):
     movie_name = update.text.replace(" ", "+").replace("\n", "+").lower()
     response = requests.get(API + movie_name)
     movies = response.json()
-    for movie in movies:
-        info = info(movie)
-        thumb = thumb(movie)
+    keyboard = []
+    for i in movies:
+        movie = i.replace(" ", "+").replace("\n", "+").lower()
+        keyboard.append([
+            InlineKeyboardButton(
+                text=f"{movie['title']} - {movie['type']}",
+                callback_data=f"movie+{movie['title']}+{movie['type']}"
+            )
+        ]
+    await update.reply_text(
+        text="Select required option",
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        disable_web_page_preview=True,
+        quote=True
+    )
 
 
 def info(movie):
