@@ -44,7 +44,7 @@ async def get_movie(bot, update, movie):
         data += "+"
         data += movie['type'].replace(" ", "_")
         data += "+"
-        data += str(movie['year'])
+        data += str(movie['release_year'])
         keyboard.append(
             [
                 InlineKeyboardButton(
