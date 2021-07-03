@@ -36,15 +36,22 @@ async def get_movie_name(bot, update):
 async def get_movie(bot, update, movie):
     movie_name = movie.replace(" ", "+")
     movie_name = movie_name.replace("\n", "+")
-    r = requests.get(API + movie_name)
+    movie_api = API + movie_name
+    r = requests.get(movie_api)
     movies = r.json()
     keyboard = []
+    number = 0
     for movie in movies:
+        number += 1
+        button_text = movie['title'] if movie['title'] else None
+        button_text += " - " + movie['type'] if movie['type'] else None
+        button_text += " - " movie['release_year'] if movie['release_year'] else None
+        switch_text = movie_link.encode() + "+" + str(number)
         keyboard.append(
             [
                 InlineKeyboardButton(
-                    text=f"{movie['title']} - {movie['type']}",
-                    switch_inline_query_current_chat=json.dumps(movie).encode()
+                    text=button_text,
+                    switch_inline_query_current_chat=switch_text
                 )
             ]
         )
@@ -53,24 +60,6 @@ async def get_movie(bot, update, movie):
         reply_markup=InlineKeyboardMarkup(keyboard),
         disable_web_page_preview=True,
         quote=True
-    )
-
-
-async def cb_edit(bot, update, movie, type):
-    movie_name = movie.replace("_", "+")
-    r = requests.get(API + movie_name)
-    movies = r.json()
-    title = movie.replace("_", " ")
-    type_movie = type.replace("_", " ")
-    for info in movies:
-        if (title in info['title'] or info['title'] in title) and (type_movie in info['type'] or info['type'] in type_movie):
-            try:
-                information = info(movie)
-            except Exception as error:
-                information = error
-    await update.edit_text(
-        text=information,
-        disable_web_page_preview=True
     )
 
 
