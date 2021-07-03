@@ -1,5 +1,6 @@
 # Author: Fayas (https://github.com/FayasNoushad) (@FayasNoushad)
 
+import json
 import requests
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -43,7 +44,7 @@ async def get_movie(bot, update, movie):
             [
                 InlineKeyboardButton(
                     text=f"{movie['title']} - {movie['type']}",
-                    switch_inline_query_current_chat=movie.encode()
+                    switch_inline_query_current_chat=json.dumps(movie).encode()
                 )
             ]
         )
