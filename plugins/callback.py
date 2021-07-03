@@ -7,6 +7,3 @@ from plugins.info import *
 
 @Client.on_callback_query()
 async def callback(bot, update):
-    if update.data.startswith("movie+"):
-        startwidth, movie, type = update.data.split("+", 2)
-        await cb_edit(bot, update.message, movie, type)
