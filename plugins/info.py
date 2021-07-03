@@ -43,7 +43,7 @@ async def get_movie(bot, update, movie):
             [
                 InlineKeyboardButton(
                     text=f"{movie['title']} - {movie['type']}",
-                    switch_inline_query_current_chat=movie
+                    switch_inline_query_current_chat=movie.encode()
                 )
             ]
         )
