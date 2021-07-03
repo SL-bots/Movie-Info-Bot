@@ -34,3 +34,7 @@ def info(movie):
     except:
         pass
     return info
+
+def thumbnail(movie):
+    thumbnail = movie['movie_thumb']
+    return thumbnail
