@@ -43,8 +43,6 @@ async def get_movie(bot, update, movie):
         data += movie['title'].replace(" ", "_")
         data += "+"
         data += movie['type'].replace(" ", "_")
-        data += "+"
-        data += str(movie['release_year'])
         keyboard.append(
             [
                 InlineKeyboardButton(
@@ -68,7 +66,7 @@ async def cb_edit(bot, update, movie, type, year):
     title = movie.replace("_", " ")
     type_movie = type.replace("_", " ")
     for i in movies:
-        if (title in i['title'] or i['title'] in title) and (type_movie in i['type'] or i['type'] in type_movie) and (year in i['release_year'] or i['release_year'] in year):
+        if (title in i['title'] or i['title'] in title) and (type_movie in i['type'] or i['type'] in type_movie):
             try:
                 text = info(movie)
             except Exception as error:
