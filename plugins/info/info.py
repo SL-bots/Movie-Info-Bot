@@ -8,7 +8,9 @@ from plugins.info import movie
 @Client.on_message(filters.command(["info", "information"]))
 async def get_command(bot, update):
     movie = update.text.split(" ", 1)
+    info, thumb = movie(movie)
 
 @Client.on_message(filters.private & filters.text)
 async def get_movie(bot, update):
     movie = update.text
+    info, thumb = movie(movie)
