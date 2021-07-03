@@ -1,7 +1,7 @@
 # Author: Fayas (https://github.com/FayasNoushad) (@FayasNoushad)
 
 
-imported
+import requests
 from pyrogram import Client, filters 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from plugins.info import *
