@@ -26,8 +26,11 @@ async def get_command(bot, update):
 
 
 @Client.on_message(filters.private & filters.text)
-async def get_movie(bot, update):
-    movie_name = update.text.replace(" ", "+").replace("\n", "+").lower()
+async def get_movie_name(bot, update):
+    await get_movie(bot, update.message, update.text)
+
+async def get_movie(bot, update, movie):
+    movie_name = movie.replace(" ", "+").replace("\n", "+").lower()
     response = requests.get(API + movie_name)
     movies = response.json()
     keyboard = []
