@@ -39,15 +39,11 @@ async def get_movie(bot, update, movie):
     movies = r.json()
     keyboard = []
     for movie in movies:
-        data = "movie+"
-        data += movie['title'].replace(" ", "_")
-        data += "+"
-        data += movie['type'].replace(" ", "_")
         keyboard.append(
             [
                 InlineKeyboardButton(
                     text=f"{movie['title']} - {movie['type']}",
-                    callback_data=data
+                    switch_inline_query_current_chat=movie
                 )
             ]
         )
