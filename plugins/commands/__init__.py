@@ -10,4 +10,4 @@ async def start(bot, update):
         await update.reply_text(f"Hi {update.from_user.mention}")
     else:
         movie = update.text.split(" ", 1)
-        await get_movie(bot, update.message, movie)
+        await get_movie(bot, update, movie)
