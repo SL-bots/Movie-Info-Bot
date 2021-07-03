@@ -45,7 +45,7 @@ async def get_movie(bot, update, movie):
         number += 1
         button_text = movie['title'] if movie['title'] else None
         button_text += " - " + movie['type'] if movie['type'] else None
-        button_text += " - " movie['release_year'] if movie['release_year'] else None
+        button_text += " - " + str(movie['release_year']) if movie['release_year'] else None
         switch_text = movie_link.encode() + "+" + str(number)
         keyboard.append(
             [
