@@ -10,7 +10,9 @@ API = 'https://api.sumanjay.cf/watch/'
 
 @Client.on_message(filters.command(["info", "information"]))
 async def get_command(bot, update):
-    movie = update.text.split(" ", 1).replace(" ", "+").replace("\n", "+").lower()
+    movie = update.text.split(" ", 1)
+    movie = movie.replace(" ", "+")
+    movie = movie.replace("\n", "+")
     keyboard = [
         InlineKeyboardButton(
             text="Click here",
@@ -33,13 +35,12 @@ async def get_movie_name(bot, update):
 async def get_movie(bot, update, movie):
     movie_name = movie.replace(" ", "+")
     movie_name = movie_name.replace("\n", "+")
-    movie_name = movie_name.lower()
     response = requests.get(API + movie_name)
     movies = response.json()
     keyboard = []
     for i in movies:
-        movie = i.replace(" ", "_")
-        movie = movie.replace("\n", "_")
+        movie = i.replace(" ", "-")
+        movie = movie.replace("\n", "-")
         movie = movie.lower()
         keyboard.append(
             [
@@ -60,7 +61,6 @@ async def get_movie(bot, update, movie):
 async def cb_edit(bot, update, movie, type):
     movie_name = movie.replace(" ", "+")
     movie_name = movie_name.replace("\n", "+")
-    movie_name = movie_name.lower()
     response = requests.get(API + movie_name)
     movies = response.json()
     for movie in movies:
