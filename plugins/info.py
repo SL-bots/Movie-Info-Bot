@@ -69,6 +69,8 @@ async def cb_edit(bot, update, movie, type):
         if (title in i['title'] or i['title'] in title) and (type_movie in i['type'] or i['type'] in type_movie):
             try:
                 thumbnail = thumb(movie)
+            except Exception as error:
+                thumbnail = None
             try:
                 information = info(movie)
             except Exception as error:
