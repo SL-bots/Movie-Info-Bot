@@ -3,7 +3,7 @@
 
 import requests
 from pyrogram import Client, filters 
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import *
 from plugins.info import *
 
 
