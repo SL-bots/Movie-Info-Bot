@@ -10,23 +10,22 @@ API = 'https://api.sumanjay.cf/watch/'
 
 @Client.on_message(filters.command(["info", "information"]))
 async def get_command(bot, update):
-    movie = update.text.split(" ", 1)
-    movie = name.replace(" ", "+").replace("\n", "+").lower()
-
-
-@Client.on_message(filters.private & filters.text)
-async def get_movie(bot, update):
-    movie = update.text
-    movie = name.replace(" ", "+").replace("\n", "+").lower()
-
-
-def movie(name):
+    movie_name = update.text.split(" ", 1).replace(" ", "+").replace("\n", "+").lower()
     response = requests.get(API + movie_name)
     movies = response.json()
     for movie in movies:
         info = info(movie)
         thumb = thumb(movie)
-    return info, thumb
+
+
+@Client.on_message(filters.private & filters.text)
+async def get_movie(bot, update):
+    movie_name = update.text.replace(" ", "+").replace("\n", "+").lower()
+    response = requests.get(API + movie_name)
+    movies = response.json()
+    for movie in movies:
+        info = info(movie)
+        thumb = thumb(movie)
 
 
 def info(movie):
