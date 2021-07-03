@@ -64,11 +64,11 @@ async def get_movie(bot, update, movie):
 async def cb_edit(bot, update, movie, type, year):
     movie_name = movie.replace("_", "+")
     response = requests.get(API + movie_name)
+    movies = response.json()
     title = movie.replace("_", " ")
     type_movie = type.replace("_", " ")
-    movies = response.json()
-    for movie in movies:
-        if (title in movie['title']) and (type_movie in movie['type']) and (int(year) in movie['release_year']):
+    for i in movies:
+        if (title in i['title']) and (type_movie in i['type']) and (int(year) in i['release_year']):
             try:
                 info = info(movie)
             except Exception as error:
