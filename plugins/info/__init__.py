@@ -5,6 +5,13 @@ import requests
 
 API = 'https://api.sumanjay.cf/watch/'
 
+def movie(movie_name):
+    response = requests.get(API + movie_name)
+    movies = response.json()
+    for movie in movies:
+        info = info(movie)
+        thumb = thumb(movie)
+    return info, thumb
 
 def info(movie):
     info = f"Title: {movie['title']}\n"
@@ -35,6 +42,6 @@ def info(movie):
         pass
     return info
 
-def thumbnail(movie):
+def thumb(movie):
     thumbnail = movie['movie_thumb']
     return thumbnail
