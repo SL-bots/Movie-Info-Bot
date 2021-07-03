@@ -39,11 +39,15 @@ async def get_movie(bot, update, movie):
     movies = response.json()
     keyboard = []
     for movie in movies:
+        data = "movie+"
+        data += movie['title'].replace(" ", "_")
+        data += "+"
+        data += movie['type'].replace(" ", "_")
         keyboard.append(
             [
                 InlineKeyboardButton(
                     text=f"{movie['title']} - {movie['type']}",
-                    callback_data=f"movie+{movie['title'].replace(" ", "_")}+{movie['type'].replace(" ", "_")}"
+                    callback_data=data
                 )
             ]
         )
@@ -58,13 +62,15 @@ async def get_movie(bot, update, movie):
 async def cb_edit(bot, update, movie, type):
     movie_name = movie.replace("_", "+")
     response = requests.get(API + movie_name)
+    title = movie.replace("_", " ")
+    type_movie = type.replace("_", " ")
     movies = response.json()
     for movie in movies:
-        try:
-            if (movie['title'] == movie) and (movie['type'] == type):
+        if (title in movie['title']) and (movie['type'] == type_movie):
+            try:
                 info = info(movie)
-        except Exception as error:
-            info = error
+            except Exception as error:
+                info = error
     await update.edit_text(
         text=info,
         disable_web_page_preview=True,
