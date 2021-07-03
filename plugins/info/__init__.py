@@ -27,7 +27,7 @@ async def get_command(bot, update):
 
 @Client.on_message(filters.private & filters.text)
 async def get_movie_name(bot, update):
-    await get_movie(bot, update.message, update.text)
+    await get_movie(bot, update, update.text)
 
 
 async def get_movie(bot, update, movie):
