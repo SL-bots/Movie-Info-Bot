@@ -25,7 +25,7 @@ async def inline_info(bot, update):
                 )
             )
         ]
-    await bot.answer_inline_query(
-        inline_query_id=update.chat.id,
-        results=answers
-    )
+        await bot.answer_inline_query(
+            inline_query_id=update.chat.id,
+            results=answers
+        )
