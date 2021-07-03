@@ -68,7 +68,7 @@ async def cb_edit(bot, update, movie, type, year):
     type_movie = type.replace("_", " ")
     movies = response.json()
     for movie in movies:
-        if (title in movie['title']) and (movie['type'] == type_movie) and (movie['release_year'] == int(year)):
+        if (title in movie['title']) and (type_movie in movie['type']) and (int(year) in movie['release_year']):
             try:
                 info = info(movie)
             except Exception as error:
