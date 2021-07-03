@@ -65,12 +65,8 @@ async def cb_edit(bot, update, movie, type):
     movies = response.json()
     title = movie.replace("_", " ")
     type_movie = type.replace("_", " ")
-    for i in movies:
-        if (title in i['title'] or i['title'] in title) and (type_movie in i['type'] or i['type'] in type_movie):
-            try:
-                thumbnail = thumb(movie)
-            except Exception as error:
-                thumbnail = None
+    for info in movies:
+        if (title in info['title'] or info['title'] in title) and (type_movie in info['type'] or info['type'] in type_movie):
             try:
                 information = info(movie)
             except Exception as error:
