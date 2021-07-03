@@ -10,9 +10,19 @@ API = 'https://api.sumanjay.cf/watch/'
 
 @Client.on_message(filters.command(["info", "information"]))
 async def get_command(bot, update):
-    movie_name = update.text.split(" ", 1).replace(" ", "+").replace("\n", "+").lower()
-    response = requests.get(API + movie_name)
-    movies = response.json()
+    movie = update.text.split(" ", 1).replace(" ", "+").replace("\n", "+").lower()
+    keyboard = [
+        InlineKeyboardButton(
+            text="Click here",
+            url=f"https://telegram.me/{username}?start={movie}"
+        )
+    ]
+    await update.reply_text(
+        text=f"Click the button below",
+        reply_markup=InlineKeyboardMarkup([keyboard]),
+        disable_web_page_preview=True,
+        quote=True
+    )
 
 
 @Client.on_message(filters.private & filters.text)
