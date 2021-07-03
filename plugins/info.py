@@ -59,7 +59,7 @@ async def get_movie(bot, update, movie):
     )
 
 
-async def cb_edit(bot, update, movie, type, year):
+async def cb_edit(bot, update, movie, type):
     movie_name = movie.replace("_", "+")
     response = requests.get(API + movie_name)
     movies = response.json()
