@@ -7,3 +7,4 @@ from plugins.info import *
 
 @Client.on_callback_query()
 async def callback(bot, update):
+    data = update.data
