@@ -35,8 +35,8 @@ async def get_movie_name(bot, update):
 async def get_movie(bot, update, movie):
     movie_name = movie.replace(" ", "+")
     movie_name = movie_name.replace("\n", "+")
-    response = requests.get(API + movie_name)
-    movies = response.json()
+    r = requests.get(API + movie_name)
+    movies = r.json()
     keyboard = []
     for movie in movies:
         data = "movie+"
@@ -61,8 +61,8 @@ async def get_movie(bot, update, movie):
 
 async def cb_edit(bot, update, movie, type):
     movie_name = movie.replace("_", "+")
-    response = requests.get(API + movie_name)
-    movies = response.json()
+    r = requests.get(API + movie_name)
+    movies = r.json()
     title = movie.replace("_", " ")
     type_movie = type.replace("_", " ")
     for info in movies:
@@ -84,7 +84,6 @@ def info(movie):
         try:
             providers = movie['providers']
             info += f"Providers:"
-            providers = movie['providers']
             for provider in providers:
                 info += f" [{provider}]({providers[provider]})"
             info += "\n"
