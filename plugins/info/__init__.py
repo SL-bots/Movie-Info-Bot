@@ -27,7 +27,7 @@ async def get_command(bot, update):
 
 @Client.on_message(filters.private & filters.text)
 async def get_movie_name(bot, update):
-    await get_movie(bot, update, update.text)
+    await get_movie(bot, update=update.message, movie=update.text)
 
 
 async def get_movie(bot, update, movie):
@@ -38,7 +38,9 @@ async def get_movie(bot, update, movie):
     movies = response.json()
     keyboard = []
     for i in movies:
-        movie = i.replace(" ", "_").replace("\n", "_").lower()
+        movie = i.replace(" ", "_")
+        movie = movie.replace("\n", "_")
+        movie = movie.lower()
         keyboard.append(
             [
                 InlineKeyboardButton(
