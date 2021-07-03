@@ -9,4 +9,4 @@ from plugins.info import *
 async def callback(bot, update):
     if update.data.startswith("movie+"):
         startwidth, movie, type, year = update.data.split("+", 3)
-        await cb_edit(bot, update.message, movie, type, year)
+        await cb_edit(bot, update.message, movie, type, int(year))
