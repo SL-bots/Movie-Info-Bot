@@ -1,9 +1,24 @@
 # Author: Fayas (https://github.com/FayasNoushad) (@FayasNoushad)
 
 import requests
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
 API = 'https://api.sumanjay.cf/watch/'
+
+
+@Client.on_message(filters.command(["info", "information"]))
+async def get_command(bot, update):
+    movie = update.text.split(" ", 1)
+    movie = name.replace(" ", "+").replace("\n", "+").lower()
+
+
+@Client.on_message(filters.private & filters.text)
+async def get_movie(bot, update):
+    movie = update.text
+    movie = name.replace(" ", "+").replace("\n", "+").lower()
+
 
 def movie(name):
     response = requests.get(API + movie_name)
@@ -12,6 +27,7 @@ def movie(name):
         info = info(movie)
         thumb = thumb(movie)
     return info, thumb
+
 
 def info(movie):
     info = f"Title: {movie['title']}\n"
@@ -41,6 +57,7 @@ def info(movie):
     except:
         pass
     return info
+
 
 def thumb(movie):
     thumbnail = movie['movie_thumb']
