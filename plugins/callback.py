@@ -1,7 +1,7 @@
 # Author: Fayas (https://github.com/FayasNoushad) (@FayasNoushad)
 
 from pyrogram import Client
-from plugins.info import cb_edit
+from plugins.info import *
 
 
 @Client.on_callback_query()
