@@ -38,14 +38,12 @@ async def get_movie(bot, update, movie):
     response = requests.get(API + movie_name)
     movies = response.json()
     keyboard = []
-    for i in movies:
-        movie = i.replace(" ", "_")
-        movie = movie.replace("\n", "_")
+    for movie in movies:
         keyboard.append(
             [
                 InlineKeyboardButton(
                     text=f"{movie['title']} - {movie['type']}",
-                    callback_data=f"movie+{movie['title']}+{movie['type']}"
+                    callback_data=f"movie+{movie['title'].replace(" ", "_")}+{movie['type'].replace(" ", "_")}"
                 )
             ]
         )
