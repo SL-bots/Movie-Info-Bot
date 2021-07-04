@@ -17,7 +17,7 @@ async def inline_info(bot, update):
     for movie in movies:
         photo = thumb(movie)
         movie_info = info(movie)
-        keyboard = providers(movie)
+        keyboard = providers(movie['providers'])
         answers.append(
             InlineQueryResultArticle(
                 title=movie['title'],
