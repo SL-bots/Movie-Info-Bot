@@ -64,34 +64,41 @@ async def get_movie(bot, update, name):
 
 
 def info(movie):
-    info = f"Title: {movie['title']}\n"
-    info += f"Type: {movie['type']}\n"
-    if movie['providers']:
-        try:
-            providers = movie['providers']
-            info += f"Providers:"
-            for provider in providers:
-                info += f" [{provider}]({providers[provider]})"
-            info += "\n"
-        except:
-            pass
+    keyboard = []
+    info = f"**Title:** {movie['title']}\n"
+    info += f"**Type:** {movie['type']}\n"
     try:
-        info += f"Release Date: {str(movie['release_date'])}\n"
+        info += f"**Release Date:** {str(movie['release_date'])}\n"
     except:
         pass
     try:
-        info += f"Release Year: {movie['release_year']}\n"
+        info += f"**Release Year:** {movie['release_year']}\n"
     except:
         pass
     try:
         if movie['score']:
             scores = movie['score']
-            info += "Score:"
+            info += "**Score:**"
             for score in scores:
                 info += f" {score} - {str(scores[score])}"
     except:
         pass
     return info
+
+def providers(movie):
+    if movie['providers']:
+        try:
+            providers = movie['providers']
+            for provider in providers:
+                keyboard.append(
+                    InlineKeyboardButton(
+                        text=provider,
+                        url=providers[provider]
+                    )
+                )
+        except:
+            pass
+    return providers
 
 
 def thumb(movie):
