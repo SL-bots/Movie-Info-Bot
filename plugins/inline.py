@@ -25,7 +25,7 @@ async def inline_info(bot, update):
             InlineQueryResultArticle(
                 title=movie['title'],
                 thumb_url=photo,
-                description=description",
+                description=description,
                 input_message_content=InputTextMessageContent(
                     message_text=movie_info,
                     disable_web_page_preview=True
