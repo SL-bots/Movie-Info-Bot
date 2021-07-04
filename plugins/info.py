@@ -86,8 +86,8 @@ def info(movie):
 
 def providers(movie):
     keyboard = []
+    providers = movie
     try:
-        providers = movie['providers']
         for provider in providers:
             keyboard.append(
                 [
