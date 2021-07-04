@@ -17,7 +17,7 @@ async def inline_info(bot, update):
         movie = movies[number]
         photo = thumb(movie)
         movie_info = info(movie)
-        providers = providers(movie) if movie['providers'] else []
+        keyboard = providers(movie) if movie['providers'] else []
         answers = [
             InlineQueryResultArticle(
                 title=movie['title'],
@@ -27,7 +27,7 @@ async def inline_info(bot, update):
                     message_text=movie_info,
                     disable_web_page_preview=True
                 ),
-                reply_markup=InlineKeyboardMarkup([providers])
+                reply_markup=InlineKeyboardMarkup([keyboard])
             )
         ]
         await bot.answer_inline_query(
