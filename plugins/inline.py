@@ -11,9 +11,10 @@ from plugins.info import *
 async def inline_info(bot, update):
         query = update.query
         number, movie_name = query.split("+", -1)
+        number = round(str(number) - 1)
         r = requests.get(API + movie_name)
         movies = r.json()
-        movie = movies[number-1]
+        movie = movies[number]
         movie_info = info(movie)
         answers = [
             InlineQueryResultArticle(
