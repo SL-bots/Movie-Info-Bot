@@ -30,7 +30,7 @@ async def inline_info(bot, update):
                 reply_markup=InlineKeyboardMarkup(keyboard)
             )
         )
-        await bot.answer_inline_query(
-            inline_query_id=update.id,
-            results=answers
-        )
+    await bot.answer_inline_query(
+        inline_query_id=update.id,
+        results=answers
+    )
