@@ -33,8 +33,8 @@ async def get_movie_name(bot, update):
     await get_movie(bot, update, update.text)
 
 
-async def get_movie(bot, update, movie):
-    movie_name = movie.replace(" ", "+")
+async def get_movie(bot, update, name):
+    movie_name = name.replace(" ", "+")
     movie_name = movie_name.replace("\n", "+")
     movie_api = API + movie_name
     r = requests.get(movie_api)
@@ -46,7 +46,7 @@ async def get_movie(bot, update, movie):
         button_text = movie['title'] if movie['title'] else None
         button_text += f" - {movie['type']}" if movie['type'] else None
         button_text += f" - ({str(movie['release_year'])})" if movie['release_year'] else None
-        switch_text = movie_api + "+" + str(number)
+        switch_text = movie_name + "+" + str(number)
         keyboard.append(
             [
                 InlineKeyboardButton(
