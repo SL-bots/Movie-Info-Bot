@@ -97,7 +97,7 @@ def providers(movie):
             )
     except:
         pass
-    return providers
+    return keyboard
 
 
 def thumb(movie):
