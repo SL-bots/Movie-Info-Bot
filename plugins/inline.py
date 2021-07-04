@@ -19,7 +19,7 @@ async def inline_info(bot, update):
         answers = [
             InlineQueryResultArticle(
                 title=movie['title'],
-                description=f"{movie['title']} - {movie['type']} - {movie['year']}",
+                description=f"{movie['title']} - {movie['type']} - {movie['release_year']}",
                 input_message_content=InputTextMessageContent(
                     text=movie_info,
                     disable_web_page_preview=True
