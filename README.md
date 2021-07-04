@@ -56,3 +56,9 @@ python3 main.py
 </details>
 
 ---
+
+## Credits
+
+- [Fayas Noushad](https://github.com/FayasNoushad)
+
+- [Pyrogram](https://github.com/pyrogram/pyrogram)
