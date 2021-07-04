@@ -9,16 +9,16 @@ from plugins.info import *
 
 @Client.on_inline_query()
 async def inline_info(bot, update):
-        query = update.query
-        movie_name, number = query.split("+", 1)
-        number = round(int(number) - 1)
-        r = requests.get(API + movie_name)
-        movies = r.json()
-        movie = movies[number]
+    query = update.query
+    movie_name = query.replace(" ", "+")
+    r = requests.get(API + movie_name)
+    movies = r.json()
+    answers = []
+    for movie in movies:
         photo = thumb(movie)
         movie_info = info(movie)
         keyboard = providers(movie) if movie['providers'] else []
-        answers = [
+        answers.append(
             InlineQueryResultArticle(
                 title=movie['title'],
                 thumb_url=photo,
@@ -29,7 +29,7 @@ async def inline_info(bot, update):
                 ),
                 reply_markup=InlineKeyboardMarkup(keyboard)
             )
-        ]
+        )
         await bot.answer_inline_query(
             inline_query_id=update.id,
             results=answers
