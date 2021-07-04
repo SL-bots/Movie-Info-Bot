@@ -10,7 +10,7 @@ from plugins.info import *
 @Client.on_inline_query()
 async def inline_info(bot, update):
         query = update.query
-        movie_name, number = query.split("+", -1)
+        movie_name, number = query.split("+", 1)
         number = round(int(number) - 1)
         r = requests.get(API + movie_name)
         movies = r.json()
@@ -21,7 +21,7 @@ async def inline_info(bot, update):
                 title=movie['title'],
                 description=f"{movie['title']} - {movie['type']} - {movie['release_year']}",
                 input_message_content=InputTextMessageContent(
-                    text=movie_info,
+                    message_text=movie_info,
                     disable_web_page_preview=True
                 )
             )
