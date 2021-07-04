@@ -64,7 +64,6 @@ async def get_movie(bot, update, name):
 
 
 def info(movie):
-    keyboard = []
     info = f"**Title:** {movie['title']}\n"
     info += f"**Type:** {movie['type']}\n"
     try:
@@ -86,18 +85,18 @@ def info(movie):
     return info
 
 def providers(movie):
-    if movie['providers']:
-        try:
-            providers = movie['providers']
-            for provider in providers:
-                keyboard.append(
-                    InlineKeyboardButton(
-                        text=provider,
-                        url=providers[provider]
-                    )
+    keyboard = []
+    try:
+        providers = movie['providers']
+        for provider in providers:
+            keyboard.append(
+                InlineKeyboardButton(
+                    text=provider,
+                    url=providers[provider]
                 )
-        except:
-            pass
+            )
+    except:
+        pass
     return providers
 
 
