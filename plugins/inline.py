@@ -26,7 +26,7 @@ async def inline_info(bot, update):
                 input_message_content=InputTextMessageContent(
                     message_text=movie_info,
                     disable_web_page_preview=True
-                )
+                ),
                 reply_markup=InlineKeyboardMarkup([providers])
             )
         ]
