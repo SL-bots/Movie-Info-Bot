@@ -84,9 +84,10 @@ def info(movie):
         pass
     return info
 
-def providers(providers):
+def providers(movie):
     keyboard = []
     try:
+        providers = movie['providers']
         for provider in providers:
             keyboard.append(
                 [
