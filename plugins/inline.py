@@ -10,7 +10,7 @@ from plugins.info import *
 @Client.on_inline_query()
 async def inline_info(bot, update):
         query = update.query
-        number, movie_name = query.split("+", -1)
+        movie_name, number = query.split("+", -1)
         number = round(int(number) - 1)
         r = requests.get(API + movie_name)
         movies = r.json()
