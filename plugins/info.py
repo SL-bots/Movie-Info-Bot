@@ -90,10 +90,12 @@ def providers(movie):
         providers = movie['providers']
         for provider in providers:
             keyboard.append(
-                InlineKeyboardButton(
-                    text=provider,
-                    url=providers[provider]
-                )
+                [
+                    InlineKeyboardButton(
+                        text=provider,
+                        url=providers[provider]
+                    )
+                ]
             )
     except:
         pass
