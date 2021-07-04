@@ -20,10 +20,7 @@ async def inline_info(bot, update):
         description += f" - ({str(movie['release_year'])})" if movie['release_year'] else None
         photo = thumb(movie)
         movie_info = info(movie)
-        try:
-            keyboard = providers(movie['providers'])
-        except:
-            keyboard = []
+        keyboard = providers(movie)
         answers.append(
             InlineQueryResultArticle(
                 title=movie['title'],
