@@ -28,5 +28,5 @@ async def start(bot, update):
             quote=True
         )
     else:
-        movie = update.text.split(" ", 1)
+        movie = update.text.split(" ", 1)[1]
         await get_movie(bot, update, movie)
