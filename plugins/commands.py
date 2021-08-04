@@ -4,7 +4,14 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from plugins.info import *
 
+START_TEXT = """
+Hello {}
+I am a movie information finder bot.
 
+> `I can find information of all movies.`
+
+Made by @FayasNoushad
+"""
 BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton(text='⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')
@@ -16,7 +23,7 @@ BUTTONS = InlineKeyboardMarkup(
 async def start(bot, update):
     if update.text == "/start":
         await update.reply_text(
-            text=f"Hi {update.from_user.mention},\nSend me a movie name",
+            text=START_TEXT.format(update.from_user.mention),
             reply_markup=BUTTONS,
             quote=True
         )
