@@ -77,29 +77,22 @@ def info(movie):
     try:
         if movie['score']:
             scores = movie['score']
-            info += "**Score:**"
+            info += "**Score:** "
             for score in scores:
-                info += f" {score.capitalize()} - {str(scores[score])}"
+                info += f"{score.capitalize()} - {str(scores[score])}\n"
+    except:
+        pass
+    try:
+        if movie['providers']:
+            info += "**Providers:**"
+            providers = movie['providers']
+            provider_set = []
+            for provider in providers:
+                provider_set.append(f"[{provider.capitalize()}]({providers[provider]})")
+            info += " | ".join(provider_set)
     except:
         pass
     return info
-
-def providers(movie):
-    keyboard = []
-    try:
-        providers = movie['providers']
-        for provider in providers:
-            keyboard.append(
-                [
-                    InlineKeyboardButton(
-                        text=provider.capitalize(),
-                        url=providers[provider]
-                    )
-                ]
-            )
-    except:
-        pass
-    return keyboard
 
 
 def thumb(movie):
