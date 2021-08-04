@@ -5,6 +5,13 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from plugins.info import *
 
 
+BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton(text='⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')
+        ]]
+    )
+
+
 @Client.on_message(filters.private & filters.command(["start"]), group=-1)
 async def start(bot, update):
     if update.text == "/start":
