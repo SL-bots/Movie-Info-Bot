@@ -4,7 +4,8 @@
 import requests
 from pyrogram import Client, filters 
 from pyrogram.types import *
-from plugins.info import *
+from .commands import *
+from .info import *
 
 
 @Client.on_inline_query()
@@ -20,7 +21,7 @@ async def inline_info(bot, update):
         description += f" - ({str(movie['release_year'])})" if movie['release_year'] else None
         photo = thumb(movie)
         movie_info = info(movie)
-        keyboard = providers(movie)
+        keyboard = BUTTONS
         answers.append(
             InlineQueryResultArticle(
                 title=movie['title'],
