@@ -22,7 +22,7 @@ async def get_command(bot, update):
         )
     ]
     await update.reply_text(
-        text=f"Click the button below",
+        text=f"**Click the button below**",
         reply_markup=InlineKeyboardMarkup([keyboard]),
         disable_web_page_preview=True,
         quote=True
