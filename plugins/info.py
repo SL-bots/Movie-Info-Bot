@@ -46,14 +46,17 @@ async def get_movie(bot, update, name):
     for movie in movies:
         number += 1
         switch_text = movie_name + "+" + str(number)
-        keyboard.append(
-            [
-                InlineKeyboardButton(
-                    text=description(movie),
-                    switch_inline_query_current_chat=switch_text
-                )
-            ]
-        )
+        try:
+            keyboard.append(
+                [
+                    InlineKeyboardButton(
+                        text=description(movie),
+                        switch_inline_query_current_chat=switch_text
+                    )
+                ]
+            )
+        except:
+            pass
     keyboard.append(JOIN_BUTTONS)
     await update.reply_text(
         text="Select required option",
