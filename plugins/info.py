@@ -79,7 +79,7 @@ def description(movie):
 
 
 def info(movie):
-    info = f"**Title:** {movie['title']}\n"
+    info = f"**Title:** `{movie['title']}`\n"
     try:
         info += f"**Type:** `{movie['type'].capitalize()}`\n"
     except:
