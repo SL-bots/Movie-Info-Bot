@@ -96,8 +96,10 @@ def info(movie):
         if movie['score']:
             scores = movie['score']
             info += "**Score:** "
+            score_set = []
             for score in scores:
-                info += f"{score.capitalize()} - {str(scores[score])}\n"
+                score_set.append(f"{score.upper()} - `{str(scores[score])}`"
+            info += " | ".join(score_set)
     except:
         pass
     try:
