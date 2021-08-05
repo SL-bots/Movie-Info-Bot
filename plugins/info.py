@@ -40,7 +40,7 @@ async def get_movie(bot, update, name):
     r = requests.get(movie_api)
     movies = r.json()
     keyboard = []
-    number = -1
+    number = 1
     for movie in movies:
         number += 1
         button_text = movie['title'] if movie['title'] else None
