@@ -45,14 +45,11 @@ async def get_movie(bot, update, name):
     number = 0
     for movie in movies:
         number += 1
-        button_text = movie['title'] if movie['title'] else None
-        button_text += f" - {movie['type'].capitalize()}" if movie['type'] else None
-        button_text += f" - ({str(movie['release_year'])})" if movie['release_year'] else None
         switch_text = movie_name + "+" + str(number)
         keyboard.append(
             [
                 InlineKeyboardButton(
-                    text=button_text,
+                    text=description(movie),
                     switch_inline_query_current_chat=switch_text
                 )
             ]
