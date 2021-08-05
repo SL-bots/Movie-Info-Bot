@@ -68,7 +68,10 @@ async def get_movie(bot, update, name):
 
 def info(movie):
     info = f"**Title:** {movie['title']}\n"
-    info += f"**Type:** {movie['type']}\n"
+    try:
+        info += f"**Type:** {movie['type']}\n"
+    except:
+        pass
     try:
         info += f"**Release Date:** {str(movie['release_date'])}\n"
     except:
