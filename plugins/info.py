@@ -10,7 +10,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 API = 'https://api.sumanjay.cf/watch/'
 
 
-@Client.on_message(filters.command(["info", "information"]))
+@Client.on_message(filters.command(["info", "information"]), group=2)
 async def get_command(bot, update):
     movie = update.text.split(" ", 1)
     movie = movie.replace(" ", "+")
@@ -31,6 +31,8 @@ async def get_command(bot, update):
 
 @Client.on_message(filters.private & filters.text)
 async def get_movie_name(bot, update):
+    if update.text.startswith("/"):
+        return
     await get_movie(bot, update, update.text)
 
 
