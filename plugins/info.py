@@ -65,7 +65,7 @@ async def get_movie(bot, update, name):
 
 def description(movie):
     set = []
-    if movie['title']
+    if movie['title']:
         set.append(movie['title'])
     if movie['type']:
         set.append(movie['type'].capitalize())
