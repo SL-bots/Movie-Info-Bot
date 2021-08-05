@@ -98,7 +98,7 @@ def info(movie):
             info += "**Score:** "
             score_set = []
             for score in scores:
-                score_set.append(f"{score.upper()} - `{str(scores[score])}`"
+                score_set.append(f"{score.upper()} - `{str(scores[score])}`")
             info += " | ".join(score_set)
     except:
         pass
@@ -109,8 +109,7 @@ def info(movie):
             provider_set = []
             for provider in providers:
                 provider_set.append(f"[{provider.capitalize()}]({providers[provider]})")
-            score = " | ".join(provider_set)
-            info += score
+            info += " | ".join(provider_set)
     except:
         pass
     return info
