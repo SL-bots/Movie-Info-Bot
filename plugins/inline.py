@@ -12,6 +12,7 @@ from .info import *
 @Client.on_inline_query()
 async def inline_info(bot, update):
     query = update.query
+    num = None
     if "+" in query:
         movie_name, num = query.split("+", -1)
     else:
