@@ -12,8 +12,9 @@ from .info import *
 async def inline_info(bot, update):
     query = update.query
     movie_name, number = query.split("+" -1)
+    movie_name = movie_name.replace(" ", "+")
     r = requests.get(API + movie_name)
-    movies = [r.json()[int(num)]] if num else r.json()
+    movies = [r.json()[int(number)]] if number else r.json()
     answers = []
     for movie in movies:
         description = movie['title'] if movie['title'] else None
