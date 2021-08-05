@@ -2,6 +2,7 @@
 
 
 import requests
+from requests.utils import requote_uri
 from pyrogram import Client, filters 
 from pyrogram.types import *
 from .commands import *
@@ -15,9 +16,11 @@ async def inline_info(bot, update):
         movie_name, number = query.split("+", -1)
     else:
         movie_name = query
-    movie_name = movie_name.replace(" ", "+")
-    r = requests.get(API + movie_name)
-    movies = [r.json()[int(number) - 1]] if number else r.json()
+    r = requests.get(API + requote_uri(movie_name))
+    if number:
+        movies = [r.json()[int(number) - 1]]
+    else:
+        movies = r.json()
     answers = []
     for movie in movies:
         description = movie['title'] if movie['title'] else None
