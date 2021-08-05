@@ -1,7 +1,8 @@
 # Author: Fayas (https://github.com/FayasNoushad) (@FayasNoushad)
 
 import json
-import requests
+import requests 
+from .commands import *
 from requests.utils import requote_uri
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -56,6 +57,7 @@ async def get_movie(bot, update, name):
                 )
             ]
         )
+    keyboard.append(JOIN_BUTTONS)
     await update.reply_text(
         text="Select required option",
         reply_markup=InlineKeyboardMarkup(keyboard),
