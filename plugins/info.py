@@ -109,7 +109,8 @@ def info(movie):
             provider_set = []
             for provider in providers:
                 provider_set.append(f"[{provider.capitalize()}]({providers[provider]})")
-            info += " | ".join(provider_set)
+            score = " | ".join(provider_set)
+            info += score
     except:
         pass
     return info
