@@ -12,8 +12,17 @@ I am a movie information finder bot.
 
 Made by @FayasNoushad
 """
-JOIN_BUTTONS = [InlineKeyboardButton(text='⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')]
-BUTTONS = InlineKeyboardMarkup([JOIN_BUTTONS])
+
+JOIN_BUTTONS = [
+    InlineKeyboardButton(
+        text='⚙ Join Updates Channel ⚙',
+        url='https://telegram.me/FayasNoushad'
+    )
+]
+
+BUTTONS = InlineKeyboardMarkup(
+    [JOIN_BUTTONS]
+)
 
 @Client.on_message(filters.private & filters.command(["start"]), group=-1)
 async def start(bot, update):
