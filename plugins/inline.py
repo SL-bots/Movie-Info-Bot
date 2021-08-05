@@ -11,9 +11,9 @@ from .info import *
 @Client.on_inline_query()
 async def inline_info(bot, update):
     query = update.query
-    movie_name = query.replace(" ", "+")
+    movie_name, number = query.split("+" -1)
     r = requests.get(API + movie_name)
-    movies = r.json()
+    movies = [r.json()[int(num)]] if num else r.json()
     answers = []
     for movie in movies:
         description = movie['title'] if movie['title'] else None
@@ -31,7 +31,7 @@ async def inline_info(bot, update):
                     message_text=movie_info,
                     disable_web_page_preview=True
                 ),
-                reply_markup=InlineKeyboardMarkup(keyboard)
+                reply_markup=keyboard
             )
         )
     await bot.answer_inline_query(
