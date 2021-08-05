@@ -24,7 +24,7 @@ async def inline_info(bot, update):
         set = []
         set.append(movie['title'] if movie['title'] else None)
         set.append(movie['type'].capitalize() if movie['type'] else None)
-        set.append(str(movie['release_year'])}) if movie['release_year'] else None)
+        set.append(str(movie['release_year']) if movie['release_year'] else None)
         description = " - ".join(set)
         photo = thumb(movie)
         movie_info = info(movie)
