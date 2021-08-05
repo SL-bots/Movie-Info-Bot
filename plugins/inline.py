@@ -11,10 +11,13 @@ from .info import *
 @Client.on_inline_query()
 async def inline_info(bot, update):
     query = update.query
-    movie_name, number = query.split("+", -1)
+    if "+" in query:
+        movie_name, number = query.split("+", -1)
+    else:
+        movie_name = query
     movie_name = movie_name.replace(" ", "+")
     r = requests.get(API + movie_name)
-    movies = [r.json()[int(number)]] if number else r.json()
+    movies = [r.json()[int(number) - 1]] if number else r.json()
     answers = []
     for movie in movies:
         description = movie['title'] if movie['title'] else None
