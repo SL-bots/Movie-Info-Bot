@@ -21,21 +21,21 @@ async def inline_info(bot, update):
     movies = [r.json()[int(num) - 1]] if num else r.json()
     answers = []
     for movie in movies:
-        photo = thumb(movie)
-        movie_info = info(movie)
-        keyboard = BUTTONS
-        answers.append(
-            InlineQueryResultArticle(
-                title=movie['title'],
-                thumb_url=photo,
-                description=description(movie),
-                input_message_content=InputTextMessageContent(
-                    message_text=movie_info,
-                    disable_web_page_preview=True
-                ),
-                reply_markup=keyboard
+        try:
+            answers.append(
+                InlineQueryResultArticle(
+                    title=movie['title'],
+                    thumb_url=thumb(movie),
+                    description=description(movie),
+                    input_message_content=InputTextMessageContent(
+                        message_text=info(movie),
+                        disable_web_page_preview=True
+                    ),
+                    reply_markup=BUTTONS
+                )
             )
-        )
+        except:
+            pass
     await bot.answer_inline_query(
         inline_query_id=update.id,
         results=answers
