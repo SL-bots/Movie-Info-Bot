@@ -2,6 +2,7 @@
 
 import json
 import requests
+from requests.utils import requote_uri
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -34,8 +35,7 @@ async def get_movie_name(bot, update):
 
 
 async def get_movie(bot, update, name):
-    movie_name = name.replace(" ", "+")
-    movie_name = movie_name.replace("\n", "+")
+    movie_name = requote_uri(name)
     movie_api = API + movie_name
     r = requests.get(movie_api)
     movies = r.json()
