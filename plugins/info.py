@@ -8,7 +8,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
-API = 'https://api.sumanjay.cf/watch/'
+API = 'https://api.sumanjay.cf/watch/query='
 
 
 @Client.on_message(filters.command(["info", "information"]), group=2)
