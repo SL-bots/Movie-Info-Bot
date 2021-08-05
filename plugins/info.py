@@ -81,15 +81,15 @@ def description(movie):
 def info(movie):
     info = f"**Title:** {movie['title']}\n"
     try:
-        info += f"**Type:** {movie['type']}\n"
+        info += f"**Type:** `{movie['type'].capitalize()}`\n"
     except:
         pass
     try:
-        info += f"**Release Date:** {str(movie['release_date'])}\n"
+        info += f"**Release Date:** `{str(movie['release_date'])}`\n"
     except:
         pass
     try:
-        info += f"**Release Year:** {movie['release_year']}\n"
+        info += f"**Release Year:** `{movie['release_year']}`\n"
     except:
         pass
     try:
