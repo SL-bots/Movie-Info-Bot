@@ -99,7 +99,7 @@ def info(movie):
             score_set = []
             for score in scores:
                 score_set.append(f"{score.upper()} - `{str(scores[score])}`")
-            info += " | ".join(score_set)
+            info += " | ".join(score_set) + "\n"
     except:
         pass
     try:
