@@ -4,14 +4,12 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from plugins.info import *
 
-START_TEXT = """
-Hello {}
+START_TEXT = """Hello {}
 I am a movie information finder bot.
 
 > `I can find information of all movies.`
 
-Made by @FayasNoushad
-"""
+Made by @FayasNoushad"""
 
 JOIN_BUTTONS = [
     InlineKeyboardButton(
