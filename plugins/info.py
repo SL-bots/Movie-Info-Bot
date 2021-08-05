@@ -12,9 +12,7 @@ API = 'https://api.sumanjay.cf/watch/'
 
 @Client.on_message(filters.command(["info", "information"]), group=2)
 async def get_command(bot, update):
-    movie = update.text.split(" ", 1)
-    movie = movie.replace(" ", "+")
-    movie = movie.replace("\n", "+")
+    movie = requote_uri(update.text.split(" ", 1)[1])
     keyboard = [
         InlineKeyboardButton(
             text="Click here",
