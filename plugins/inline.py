@@ -21,9 +21,11 @@ async def inline_info(bot, update):
     movies = [r.json()[int(num) - 1]] if num else r.json()
     answers = []
     for movie in movies:
-        description = movie['title'] if movie['title'] else None
-        description += f" - {movie['type'].capitalize()}" if movie['type'] else None
-        description += f" - ({str(movie['release_year'])})" if movie['release_year'] else None
+        set = []
+        set.append(movie['title'] if movie['title'] else None)
+        set.append(movie['type'].capitalize() if movie['type'] else None)
+        set.append(str(movie['release_year'])}) if movie['release_year'] else None)
+        description = " - ".join(set)
         photo = thumb(movie)
         movie_info = info(movie)
         keyboard = BUTTONS
