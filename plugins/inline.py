@@ -11,7 +11,7 @@ from .info import *
 @Client.on_inline_query()
 async def inline_info(bot, update):
     query = update.query
-    movie_name, number = query.split("+" -1)
+    movie_name, number = query.split("+", -1)
     movie_name = movie_name.replace(" ", "+")
     r = requests.get(API + movie_name)
     movies = [r.json()[int(number)]] if number else r.json()
