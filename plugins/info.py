@@ -111,5 +111,5 @@ def info(movie):
 
 
 def thumb(movie):
-    thumbnail = movie['movie_thumb']
+    thumbnail = movie['movie_thumb'] if movie['movie_thumb'] elae None
     return thumbnail
