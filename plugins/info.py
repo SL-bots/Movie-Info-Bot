@@ -13,6 +13,8 @@ API = 'https://api.sumanjay.cf/watch/'
 @Client.on_message(filters.command(["info", "information"]), group=2)
 async def get_command(bot, update):
     movie = requote_uri(update.text.split(" ", 1)[1])
+    username = await bot.get_me
+    print(username)
     keyboard = [
         InlineKeyboardButton(
             text="Click here",
@@ -84,7 +86,7 @@ def info(movie):
         pass
     try:
         if movie['providers']:
-            info += "**Providers:**"
+            info += "**Providers:** "
             providers = movie['providers']
             provider_set = []
             for provider in providers:
