@@ -29,7 +29,7 @@ async def get_command(bot, update):
     )
 
 
-@Client.on_message(filters.private & filters.text & ~filters.via_bot)
+@Client.on_message(filters.private & filters.text & ~filters.via_bot & ~filters.edited)
 async def get_movie_name(bot, update):
     if update.text.startswith("/"):
         return
