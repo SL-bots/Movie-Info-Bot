@@ -108,7 +108,7 @@ def info(movie):
             providers = movie['providers']
             provider_set = []
             for provider in providers:
-                provider_set.append(f"[{provider.capitalize()}]({providers[provider]})")
+                provider_set.append(f"<a href={providers[provider]}>{provider.capitalize()}</a>")
             info += " | ".join(provider_set)
     except:
         pass
