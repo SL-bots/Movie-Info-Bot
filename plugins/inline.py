@@ -5,8 +5,8 @@ import requests
 from requests.utils import requote_uri
 from pyrogram import Client, filters 
 from pyrogram.types import *
-from .commands import *
-from .info import *
+from .commands import BUTTONS
+from .info import thumb, description, info
 
 
 @Client.on_inline_query()
@@ -19,10 +19,10 @@ async def inline_info(bot, update):
         movie_name = query
     r = requests.get(API + requote_uri(movie_name))
     movies = [r.json()[int(num) - 1]] if num else r.json()
-    answers = []
+    results = []
     for movie in movies:
         try:
-            answers.append(
+            results.append(
                 InlineQueryResultArticle(
                     title=movie['title'],
                     thumb_url=thumb(movie),
@@ -36,7 +36,4 @@ async def inline_info(bot, update):
             )
         except:
             pass
-    await bot.answer_inline_query(
-        inline_query_id=update.id,
-        results=answers
-    )
+    await update.answer(results)
