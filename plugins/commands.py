@@ -2,7 +2,7 @@
 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from .info import *
+from .info import get_movie
 
 START_TEXT = """Hello {}
 I am a movie information finder bot.
