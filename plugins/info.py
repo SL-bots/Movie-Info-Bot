@@ -1,14 +1,20 @@
 # Author: Fayas (https://github.com/FayasNoushad) (@FayasNoushad)
 
 import json
-import requests 
-from .commands import JOIN_BUTTONS
+import requests
 from requests.utils import requote_uri
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
 API = "https://api.sumanjay.cf/watch/query="
+
+JOIN_BUTTONS = [
+    InlineKeyboardButton(
+        text='⚙ Join Updates Channel ⚙',
+        url='https://telegram.me/FayasNoushad'
+    )
+]
 
 
 @Client.on_message(filters.command(["info", "information"]), group=2)
