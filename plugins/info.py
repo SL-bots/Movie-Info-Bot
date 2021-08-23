@@ -2,7 +2,7 @@
 
 import json
 import requests 
-from .commands import *
+from .commands import JOIN_BUTTONS
 from requests.utils import requote_uri
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
