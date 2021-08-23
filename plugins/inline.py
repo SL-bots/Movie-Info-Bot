@@ -6,7 +6,7 @@ from requests.utils import requote_uri
 from pyrogram import Client, filters 
 from pyrogram.types import *
 from .commands import BUTTONS
-from .info import thumb, description, info
+from .info import API, thumb, description, info
 
 
 @Client.on_inline_query()
