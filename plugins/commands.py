@@ -9,13 +9,17 @@ I am a movie information finder bot.
 
 > `I can find information of all movies.`
 
-Made by @FayasNoushad"""
+Made by @SLBotsOfficial"""
 
 JOIN_BUTTONS = [
     InlineKeyboardButton(
-        text='⚙ Join Updates Channel ⚙',
-        url='https://telegram.me/FayasNoushad'
-    )
+        text='🚀 Join Bots Updates Channel 🚀',
+        url='https://telegram.me/SLBotsOfficial'
+    ),
+    InlineKeyboardButton(
+        text='🔥 Join Movie Updates Channel 🔥',
+        url='https://telegram.me/genuinemovieclub'
+    )    
 ]
 
 BUTTONS = InlineKeyboardMarkup(
