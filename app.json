@@ -1,7 +1,7 @@
 {
     "name": "Movie-Info-Bot",
     "description": "A movie information finder telegram bot",
-    "repository": "https://github.com/FayasNoushad/Movie-Info-Bot",
+    "repository": "https://github.com/SL-bots/Movie-Info-Bot",
     "keywords": [
         "movie",
         "information",
