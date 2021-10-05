@@ -7,7 +7,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
-API = "https://api.sumanjay.cf/watch/query="
+API = "http://www.omdbapi.com/?i=tt3896198&apikey=3a78a264/query="
 
 JOIN_BUTTONS = [
     InlineKeyboardButton(
