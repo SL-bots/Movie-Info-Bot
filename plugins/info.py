@@ -7,7 +7,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
-API = "https://api.themoviedb.org/3/movie/550?api_key=06b7e5b062310c66ac781b3d39025949/query="
+API = "https://api.themoviedb.org/3/movie/550?api_key=06b7e5b062310c66ac781b3d39025949"
 
 JOIN_BUTTONS = [
     InlineKeyboardButton(
